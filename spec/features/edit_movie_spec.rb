@@ -1,12 +1,3 @@
-def setup_movie_to_edit
-  movie = Movie.create(movie_attributes)
-
-  visit movie_url(movie)
-
-  click_link 'Edit'
-  movie
-end
-
 describe "Editing a movie" do
 
   it "updates the movie and shows the movie's updated details" do
@@ -40,4 +31,27 @@ describe "Editing a movie" do
 
     expect(page).to_not have_text('Updated Event Name')
   end
+
+  it "displays the footer partial" do
+    movie=setup_movie_to_edit
+
+    expect(current_path).to eq(edit_movie_path(movie))
+
+    expect(find_field('movie_title').value).to eq(movie.title)
+
+    expect(page).to have_text("The Pragmatic Studio")
+  end
 end
+
+private
+
+def setup_movie_to_edit
+  movie = Movie.create(movie_attributes)
+
+  visit movie_url(movie)
+
+  click_link 'Edit'
+  movie
+end
+
+

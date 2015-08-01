@@ -35,4 +35,12 @@ describe "Viewing the list of movies" do
     expect(page).to have_text(movie1.released_on)
     expect(page).to have_text("$318,412,101.00")
   end
+
+  it "displays the footer partial" do
+    movie = Movie.create(movie_attributes(total_gross: 60000000.00))
+
+    visit movie_url(movie)
+
+    expect(page).to have_text("The Pragmatic Studio")
+  end
 end

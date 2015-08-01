@@ -22,6 +22,12 @@ describe 'Creating a new movie' do
 
     expect(page).to_not have_text('New Movie Title')
   end
+
+  it "displays the footer partial" do
+    setup_new_movie
+
+    expect(page).to have_text("The Pragmatic Studio")
+  end
 end
 
 private

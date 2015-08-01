@@ -31,4 +31,12 @@ describe "Viewing an individual movie" do
 
     expect(page).to have_text("Flop!")
   end
+
+  it "displays the footer partial" do
+    movie = Movie.create(movie_attributes(total_gross: 60000000.00))
+
+    visit movie_url(movie)
+
+    expect(page).to have_text("The Pragmatic Studio")
+  end
 end
