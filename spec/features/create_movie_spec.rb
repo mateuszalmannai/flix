@@ -1,6 +1,6 @@
 describe 'Creating a new movie' do
 
-  it "should save the movie and shows the movie's details" do
+  it "should save the movie and show the movie's details" do
     setup_new_movie
 
     # If you're taking advantage of the HTML 5 date field in Chrome,
